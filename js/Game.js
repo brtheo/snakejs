@@ -8,11 +8,11 @@ let context = canvas.getContext("2d")
 let cell = Math.sqrt(canvas.height)
 console.log(cell)
 
-let snake = new Snake(context, cell, 5, 5, "#8BC34A")
+let snake = new Snake(context, cell, 0, 0, "#8BC34A")
 let apple = new Apple(context, cell, "#B71C1C")
 
 setInterval(update, 60)
-document.addEventListener("keypress", keyboardInput)
+document.addEventListener("keydown", keyboardInput)
 
 function draw() {
     context.fillStyle = "#212121"
