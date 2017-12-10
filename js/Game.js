@@ -1,17 +1,16 @@
 import Snake from './Snake.js'
 import Apple from './Apple.js'
+import Timer from './Timer.js'
 let canvas = document.querySelector("#game")
 let context = canvas.getContext("2d")
 
-
-
 let cell = Math.sqrt(canvas.height)
-console.log(cell)
 
 let snake = new Snake(context, cell, 0, 0, "#8BC34A")
 let apple = new Apple(context, cell, "#B71C1C")
 
 setInterval(update, 60)
+
 document.addEventListener("keydown", keyboardInput)
 
 function draw() {
@@ -20,7 +19,7 @@ function draw() {
     snake.draw()
     apple.draw()
 }
-function update() { 
+function update(dt) { 
     draw()
     snake.update()
 }
@@ -28,15 +27,19 @@ function update() {
 function keyboardInput(e) {
     switch(e.key) {
         case "z":
+        case "Z":
             snake.vel.move(0,-1)
         break
         case "q":
+        case "Q":
             snake.vel.move(-1,0)
         break
         case "s":
+        case "S":
             snake.vel.move(0,1)
         break
         case "d":
+        case "D":
             snake.vel.move(1,0)
         break
 

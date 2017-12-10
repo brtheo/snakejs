@@ -1,5 +1,5 @@
 import Entity from './Entity.js'
-import Vector2 from "./Vector2.js"
+import Vector2 from './Vector2.js'
 export default class Snake extends Entity {
     constructor (context, cell,  x, y, color) {
         super(context, cell, x, y)
