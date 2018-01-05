@@ -43,6 +43,9 @@ export default class Snake extends Entity {
                     this.cell/2-1, 0, 360)
         this.ctx.fillStyle = this.color
         this.ctx.fill()
+        this.ctx.lineWidth = 2
+        this.ctx.strokeStyle = '#e7e7e7e7'
+        this.ctx.stroke()
 
         /**Affiche toutes les queues du serpent, des cercles verts plus ou moins grand */
         this.tail.forEach((t, i) => {
@@ -52,11 +55,7 @@ export default class Snake extends Entity {
                             this.cell/2-(i%3*2), 0, 360)
                 this.ctx.fillStyle = this.color
                 this.ctx.fill()
-                if(Vector2.isEqual(this.pos, t)) { // Vérifie si le serpent se mange la queue
-                    /**Réinitialisation des valeurs par défauts */
-                    this.tailLength = 5
-                    this.exp = 0 
-                    this.lvl = 1
+                if(Vector2.isEqual(this.pos, t)) { // Vérifie si le serpent se mange la queue 
                     this.stop() //Arret total du serpent
                     UI.game.dispatchEvent(this.death) //Déclenchement de l'evenement gameover
                     UI.gameover.style.display = "block" //Affichage de l'element d'interface de gameover
