@@ -25,6 +25,7 @@ export default class Snake extends Entity {
         this.tailLength = 5 //Longeur du serpent par défaut
         this.tail = [] //Tableau de vecteur 2D representant les positions des queues du serpent
         this.exp = 0 //Points d'exp par défaut
+        this.totalexp = 0
         this.lvl = 1 //Niveau par défaut
 
         this.speed = new Event('speed') //Evenement pour modifier la vitesse du jeu
@@ -87,6 +88,7 @@ export default class Snake extends Entity {
         /**Vérifie si la tete du serpent et une pomme sont sur la même cellule */
         if(Vector2.isEqual(this.pos, apple.pos)) { 
             this.exp += 33 //Gain d'expérience
+            this.totalexp += 33
             new Audio('./ressources/exp.mp3').play() //Jingle de gain d'experience
             UI.game.dispatchEvent(this.speed)
             /**Vérifie s'il y a un level up */

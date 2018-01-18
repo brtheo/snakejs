@@ -66,10 +66,17 @@
                 text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
                 transform: translateY(-12px);
             }
+            #create_character {
+                width: 60%;
+                height: 70%;
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                zoom: 150%;
+            }
             #gameover {
-                position: absolute;
                 animation: gameover 3.5s;
-                background: black;
                 text-align: center;
                 line-height: 1.25;
                 font-family: 'Optimus Princeps';
@@ -77,19 +84,41 @@
                 color: #d32F2F;
                 width: 100%;
                 height: 200px;
-                left: 50%;
-                top: 50%;
-                transform: translate(-50%,-50%);
                 display: none;
             }
             @keyframes gameover {
                 0% {opacity: 0}
                 100% { opacity: 1}
             }
+            .box {
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%,-50%);
+                background: black;
+                color: white;
+            }
+            #scores {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 250px;
+            }
+            #scores > ul {
+                list-style-type: none;
+            
+            }
+            .scores_nick {
+                text-transform: capitalize;
+            }
         </style>
     </head>
     <body>
         <canvas id="game" height="400" width="400"></canvas>
+        <div id="scores">
+            <ul>             
+            </ul>
+        </div>
         <aside id="ui">
             <div id="lvl_wrapper">
                 <span id="lvl_text">Speed Lvl.</span>
@@ -98,7 +127,13 @@
             <progress id="exp_bar" value="0" max="100"></progress>
             <div id="exp"></div>
         </aside>
-        <div id="gameover">YOU DIED</div>
+        <div id="create_character" class="box">
+            <div>Pseudo : <input type="text" id="nickname" value="new_player"></div>
+            <div>Couleur : <input type="color" id="color" value="#388e3c"></div>
+            <button id="play">Jouer</button>
+        </div>
+        <div id="gameover" class="box">YOU DIED</div>
+        <script src="js/lib/socket.io.js"></script>
         <script src="js/Game.js" type="module"></script>
     </body>
 </html>
